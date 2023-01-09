@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ice-UI</title>
+  <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box
+      }
+
+      html {
+          --button-height: 32px;
+          --font-size: 14px;
+          --button-bg: white;
+          --button-active-bg: #eee;
+          --border-radius: 4px;
+          --color: #333;
+          --border-color: #999;
+          --border-color-hover: #666;
+      }
+
+      #app {
+
+      }
+
+      body {
+          font-size: var(--font-size);
+      }
+  </style>
+</head>
+<body>
+<div id="app" style="margin: 100px;">
+
+  <div style="padding-top: 16px;">
+    <div>
+      <g-button @click="$toast('点击弹出提示')">上方弹出</g-button>
+      <g-button @click="$toast('点击弹出提示', {position:'middle'})">中间弹出</g-button>
+      <g-button @click="$toast('点击弹出提示', {position:'bottom'})">下方弹出</g-button>
+    </div>
+  </div>
+
+
+
+  <div>
+    <g-tabs :selected="selected">
+      <g-tabs-head>
+        <g-tabs-item name="1">标题一</g-tabs-item>
+        <g-tabs-item name="2">标题二</g-tabs-item>
+      </g-tabs-head>
+      <g-tabs-body>
+        <g-tabs-pane name="1">内容1</g-tabs-pane>
+        <g-tabs-pane name="2">内容2</g-tabs-pane>
+      </g-tabs-body>
+    </g-tabs>
+  </div>
+
+<g-collapse :selected.sync="selectedTab" single>
+  <g-collapse-item title="标题1" name="1">内容11</g-collapse-item>
+  <g-collapse-item title="标题2" name="2">内容2222</g-collapse-item>
+  <g-collapse-item title="标题3" name="3">内容333333</g-collapse-item>
+</g-collapse>
+</div>
+<script src="src/app.js"></script>
+</body>
+</html>

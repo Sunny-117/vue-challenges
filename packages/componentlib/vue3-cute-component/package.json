@@ -1,0 +1,60 @@
+{
+  "name": "vue3-cute-component",
+  "version": "1.3.0",
+  "private": false,
+  "description": "Vue3 一个漂亮的小组件库 ",
+  "keywords": [
+    "timeline",
+    "vue-timeline",
+    "vue3-timeline",
+    "vue3Timeline",
+    "cute",
+    "component",
+    "components"
+  ],
+  "bugs": {
+    "url": "https://github.com/xiaojieajie/vue3-timeline/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiaojieajie/vue3-timeline"
+  },
+  "author": "xiaojieajie <https://github.com/xiaojieajie>",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "main": "dist/vue3-cute-component.umd.js",
+  "module": "dist/vue3-cute-component.es.js",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "build": "vue-tsc --noEmit && vite build --mode prod",
+    "dev": "vite --mode dev --open",
+    "lint": "eslint \"**/*.{vue,ts,js}\"",
+    "lint:fix": "npm run lint -- --fix",
+    "release": "pnpm build && bumpp package.json --commit --push --tag",
+    "test": "vitest"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  },
+  "dependencies": {
+    "vue3-cute-component": "workspace:^1.2.8"
+  },
+  "devDependencies": {
+    "@black-tooth/eslint-config": "0.0.12",
+    "@types/node": "17.0.18",
+    "@vitejs/plugin-vue": "2.2.2",
+    "@vueuse/core": "7.6.2",
+    "bumpp": "^7.1.1",
+    "eslint": "8.9.0",
+    "typescript": "4.5.5",
+    "unplugin-auto-import": "^0.6.0",
+    "vite": "2.8.4",
+    "vite-plugin-vue-setup-extend": "^0.4.0",
+    "vitest": "0.5.0",
+    "vue": "^3.2.29",
+    "vue-tsc": "0.31.4"
+  }
+}

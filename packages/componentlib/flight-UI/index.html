@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>fli-ui</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #app {
+            margin: 20px;
+        }
+
+        body {
+            font-size: 14px;
+        }
+
+        .box {
+            margin: 20px;
+        }
+
+        .sider {
+            background: darkseagreen;
+            width: 250px;
+        }
+
+        .sider.slide-enter, .sider.slide-leave-to {
+            margin-left: -250px;
+        }
+
+        .header {
+            background: #999;
+            height: 100px;
+        }
+
+        .footer {
+            background: #ccc;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+
+    <div style="margin: 5px">
+        <f-button disabled :loading="loading1" @click="loading1=!loading1">按钮</f-button>
+        <f-button :loading="loading2" @click="loading2=!loading2" icon="set">按钮</f-button>
+        <f-button :loading="loading3" @click="loading3=!loading3" icon="set" icon-position="right">按钮</f-button>
+        <f-button-group>
+            <f-button icon="left">上一页</f-button>
+            <f-button>更多</f-button>
+            <f-button icon="right" icon-position="right">下一页</f-button>
+        </f-button-group>
+    </div>
+
+    <div class="box">
+        <f-input value="张三"></f-input>
+        <f-input value="李四" :disabled="true"></f-input>
+        <f-input value="王五" readonly></f-input>
+    </div>
+    <div class="box">
+        <f-input value="王" error="姓名不能少于两个字"></f-input>
+    </div>
+    <div class="box">
+        <f-input value="王" v-model="message"></f-input>
+        <p>{{message}}</p>
+    </div>
+
+    <f-row gutter="20" align="center">
+        <f-col span="12">11</f-col>
+        <f-col span="12">22</f-col>
+    </f-row>
+
+    <f-layout class="box" style="height: 100vh">
+        <f-sider>sider</f-sider>
+        <f-layout>
+            <f-header>header</f-header>
+            <f-content>content</f-content>
+            <f-footer>footer</f-footer>
+        </f-layout>
+    </f-layout>
+
+    <button @click="showToast1">top</button>
+    <button @click="showToast2">middle</button>
+    <button @click="showToast3">bottom</button>
+
+    <div style="padding: 8px 0"></div>
+
+    <f-tabs :selected.sync="selectedTabs">
+        <f-tabs-head>
+            <template slot="actions">
+                <button>设置</button>
+            </template>
+            <f-tabs-item name="woman" disabled>
+                <f-icon name="set"></f-icon>
+                美女
+            </f-tabs-item>
+            <f-tabs-item name="finance">
+                财经
+            </f-tabs-item>
+            <f-tabs-item name="sport">
+                体育
+            </f-tabs-item>
+        </f-tabs-head>
+        <f-tabs-body>
+            <f-tabs-pane name="woman">
+                美女相关资讯
+            </f-tabs-pane>
+            <f-tabs-pane name="finance">
+                财经相关资讯
+            </f-tabs-pane>
+            <f-tabs-pane name="sport">
+                体育相关资讯
+            </f-tabs-pane>
+        </f-tabs-body>
+    </f-tabs>
+
+    <div style="padding: 8px 0"></div>
+
+    <f-collapse :selected.sync="selectedTab">
+        <f-collapse-item title="标题1" name="1">内容1</f-collapse-item>
+        <f-collapse-item title="标题2" name="2">内容2</f-collapse-item>
+        <f-collapse-item title="标题3" name="3">内容3</f-collapse-item>
+    </f-collapse>
+</div>
+
+<script src="./src/app.js"></script>
+<script src="//at.alicdn.com/t/font_1821108_6wodr3e8t08.js"></script>
+</body>
+</html>
