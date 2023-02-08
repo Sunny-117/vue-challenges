@@ -3,16 +3,16 @@
 function typeOf(obj) {
   const toString = Object.prototype.toString;
   const map = {
-    '[object Boolean]'  : 'boolean',
-    '[object Number]'   : 'number',
-    '[object String]'   : 'string',
-    '[object Function]' : 'function',
-    '[object Array]'    : 'array',
-    '[object Date]'     : 'date',
-    '[object RegExp]'   : 'regExp',
+    '[object Boolean]': 'boolean',
+    '[object Number]': 'number',
+    '[object String]': 'string',
+    '[object Function]': 'function',
+    '[object Array]': 'array',
+    '[object Date]': 'date',
+    '[object RegExp]': 'regExp',
     '[object Undefined]': 'undefined',
-    '[object Null]'     : 'null',
-    '[object Object]'   : 'object'
+    '[object Null]': 'null',
+    '[object Object]': 'object'
   };
   return map[toString.call(obj)];
 }
@@ -23,7 +23,7 @@ function deepCopy(data) {
 
   if (t === 'array') {
     o = [];
-  } else if ( t === 'object') {
+  } else if (t === 'object') {
     o = {};
   } else {
     return data;
@@ -33,7 +33,7 @@ function deepCopy(data) {
     for (let i = 0; i < data.length; i++) {
       o.push(deepCopy(data[i]));
     }
-  } else if ( t === 'object') {
+  } else if (t === 'object') {
     for (let i in data) {
       o[i] = deepCopy(data[i]);
     }
@@ -42,7 +42,7 @@ function deepCopy(data) {
 }
 
 // 由一个组件，向上找到最近的指定组件
-function findComponentUpward (context, componentName) {
+function findComponentUpward(context, componentName) {
   let parent = context.$parent;
   let name = parent.$options.name;
 
@@ -54,7 +54,7 @@ function findComponentUpward (context, componentName) {
 }
 
 // 由一个组件，向上找到所有的指定组件
-function findComponentsUpward (context, componentName) {
+function findComponentsUpward(context, componentName) {
   let parents = [];
   const parent = context.$parent;
 
@@ -66,7 +66,7 @@ function findComponentsUpward (context, componentName) {
   }
 }
 
-function findComponentDownward (context, componentName) {
+function findComponentDownward(context, componentName) {
   const childrens = context.$children;
   let children = null;
 
@@ -87,7 +87,7 @@ function findComponentDownward (context, componentName) {
 }
 
 // 由一个组件，向下找到所有指定的组件
-function findComponentsDownward (context, componentName) {
+function findComponentsDownward(context, componentName) {
   return context.$children.reduce((components, child) => {
     if (child.$options.name === componentName) components.push(child);
     const foundChilds = findComponentsDownward(child, componentName);
@@ -96,7 +96,7 @@ function findComponentsDownward (context, componentName) {
 }
 
 // 由一个组件，找到指定组件的兄弟组件
-function findBrothersComponents (context, componentName, exceptMe = true) {
+function findBrothersComponents(context, componentName, exceptMe = true) {
   let res = context.$parent.$children.filter(item => {
     return item.$options.name === componentName;
   });
@@ -106,10 +106,10 @@ function findBrothersComponents (context, componentName, exceptMe = true) {
 }
 
 export {
-      deepCopy,
-      findComponentUpward,
-      findComponentsUpward,
-      findComponentDownward,
-      findComponentsDownward,
-      findBrothersComponents
-    };
+  deepCopy,
+  findComponentUpward,
+  findComponentsUpward,
+  findComponentDownward,
+  findComponentsDownward,
+  findBrothersComponents
+};
