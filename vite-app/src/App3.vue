@@ -31,7 +31,6 @@ let isCheckedAll = computed(() => {
   return checkedNames.every((item) => item.isChecked);
 });
 const handleAllChange = (e) => {
-  // 已经全选
   if (isCheckedAll.value) {
     console.log("[ 已经是全选，应该全部取消 ] >");
     checkedNames.forEach((item) => {
