@@ -14,7 +14,7 @@
         <slot name="append"></slot>
       </template> -->
       <!-- 通过外部传入的slots动态渲染 -->
-      <template v-for="(value, name) in slots" #[name]="slotData">
+      <template v-for="name in Object.keys(slots)" #[name]="slotData">
         <slot :name="name" v-bind="slotData || {}"></slot>
       </template>
     </el-input>
@@ -24,20 +24,19 @@
 <script setup lang="ts">
 // attrs 透传所有属性
 import { ElInput } from "element-plus";
-import { onMounted, useAttrs, useSlots, useTemplateRef } from "vue";
+import {
+  onMounted,
+  useAttrs,
+  useSlots,
+  useTemplateRef,
+  defineExpose,
+} from "vue";
 const attrs = useAttrs(); // 获取所有传入的属性但不在props中定义的
 const slots = useSlots();
 const inpRef = useTemplateRef("inp"); // 获取el-input的ref
-console.log(slots);
-onMounted(() => {
-  // 获取el-input的ref
-  const refValue = inpRef.value;
-  const entries = Object.entries(refValue);
-  for (const [key, value] of entries) {
-    // 打印el-input的所有属性
-    console.log(`${key}: ${value}`);
-    // 提取到当前实例中
-  }
+// 直接暴露ref，实现ref透传
+defineExpose({
+  inp: inpRef,
 });
 </script>
 <style scoped>

@@ -1,9 +1,15 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import MyElInput from "./components/MyElInput.vue";
 import RefDebounce from "./components/RefDebounce.vue";
 import { Search } from "@element-plus/icons-vue";
 const data = ref("");
+
+const inputRef = ref();
+function onClick() {
+  const dom = inputRef.value;
+  dom.inp.focus();
+}
 </script>
 
 <template>
@@ -20,4 +26,6 @@ const data = ref("");
       <el-button :icon="Search"></el-button>
     </template>
   </MyElInput>
+  <!-- 聚焦 -->
+  <el-button @click="onClick">聚焦</el-button>
 </template>
