@@ -1,1 +1,0 @@
-export { useStars } from './useStars';
