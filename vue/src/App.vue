@@ -8,8 +8,8 @@ import SetupTest from "./components/SetupTest.vue";
 </script>
 
 <template>
-  <!-- <RefDebounce/> -->
-  <!-- <MyElInputTest /> -->
-  <!-- <ContextMenuTest /> -->
+  <RefDebounce/>
+  <MyElInputTest />
+  <ContextMenuTest />
   <SetupTest />
 </template>
